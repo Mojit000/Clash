@@ -246,7 +246,7 @@ rules:
   - DOMAIN,cf.lilyemby.my,Emby
   
   # Zox Emby
-  - DOMAIN-SUFFIX,zox.show,Media
+  - DOMAIN-SUFFIX,zox.show,Emby
 
   # 69云Emby
   - DOMAIN-SUFFIX,69yun69.com,Emby
