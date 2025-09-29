@@ -98,49 +98,49 @@ proxy-providers:
 # > 策略组
 proxy-groups:
   - name: YouTube
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/youtube.png
+    icon: https://raw.githubusercontent.com/Mojit000/Surge/master/icon/YouTube.png
     type: select
     use:
       - 全球节点
     filter: '^((?!✰✰|★★|微斯).)*$'
     
   - name: Emby
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/emby.png
+    icon: https://raw.githubusercontent.com/Mojit000/Surge/master/icon/Unwatched.png
     type: select
     use:
       - 全球节点
     filter: '^(?!.*(?:✰✰|★★|美国|US|🇺🇸日本|JP|🇯🇵|微斯)).*(?:新加坡|SG|🇸🇬|台湾|TW|🇹🇼|🇨🇳).*$'
     
   - name: Spotify
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/spotify(green).png
+    icon: https://raw.githubusercontent.com/Mojit000/Surge/master/icon/Spotify.png
     type: select
     use:
       - 全球节点
     filter: '(?:新加坡|SG|🇸🇬).*$'
 
   - name: TikTok
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/tiktok.png
+    icon: https://raw.githubusercontent.com/Mojit000/Surge/master/icon/TikTok.png
     type: select
     use:
       - 全球节点
     filter: '^(?!.*(?:✰✰|★★|微斯)).*(?:美国|US|🇺🇸新加坡|SG|🇸🇬).*$'
     
   - name: uTorrent
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/alist.png
+    icon: https://raw.githubusercontent.com/Mojit000/Surge/master/icon/PikPak.png
     type: url-test
     use:
       - 全球节点
     filter: '(?=.*(?:香港|台湾|美国|新加坡))^((?!微斯|神器).)*$'
     
   - name: AIService
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/ChatGPT-green.png
+    icon: https://raw.githubusercontent.com/Mojit000/Surge/master/icon/Gork.png
     type: select
     use:
       - 全球节点
     filter: '^(?!.*(?:✰✰|★★)).*(?:美国|US|🇺🇸新加坡|SG|🇸🇬|台湾|TW|🇹🇼|🇨🇳).*$'
 
   - name: Global
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/Firefox.png
+    icon: https://raw.githubusercontent.com/Mojit000/Surge/master/icon/Thread.png
     type: select
     disable-udp: false
     use:
