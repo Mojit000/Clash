@@ -89,7 +89,7 @@ proxy-providers:
     path: ./proxy_provider/全球节点.yaml
     url: https://gist.githubusercontent.com/Mojit000/1b86dc74a8ea77d0001823e78831a43f/raw/Mihomo
     interval: 86400
-    filter: '^(?=.*(.))(?!.*((?i)群|邀请|BT|ATT|🔟|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel)\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$'
+    filter: '^(?=.*(.))(?!.*((?i)群|邀请|BT|ATT|公益|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel)\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$'
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
@@ -102,21 +102,28 @@ proxy-groups:
     type: select
     use:
       - 全球节点
-    filter: '(?=.*(?:香港|台湾|美国|日本|韩国|新加坡))^((?!微斯|神器).)*$'
+    filter: '^((?!✰✰|★★|微斯).)*$'
     
   - name: Emby
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/emby.png
     type: select
     use:
       - 全球节点
-    filter: '(?=.*(?:台湾|新加坡))^((?!微斯|神器).)*$'
+    filter: '^(?!.*(?:✰✰|★★|美国|US|🇺🇸日本|JP|🇯🇵|微斯)).*(?:新加坡|SG|🇸🇬|台湾|TW|🇹🇼|🇨🇳).*$'
     
   - name: Spotify
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/spotify(green).png
     type: select
     use:
       - 全球节点
-    filter: '新加坡|狮城|🇸🇬|香港|HK|🇭🇰'
+    filter: '(?:新加坡|SG|🇸🇬).*$'
+
+  - name: TikTok
+    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/tiktok.png
+    type: select
+    use:
+      - 全球节点
+    filter: '^(?!.*(?:✰✰|★★|微斯)).*(?:美国|US|🇺🇸新加坡|SG|🇸🇬).*$'
     
   - name: uTorrent
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/alist.png
@@ -125,12 +132,12 @@ proxy-groups:
       - 全球节点
     filter: '(?=.*(?:香港|台湾|美国|新加坡))^((?!微斯|神器).)*$'
     
-  - name: OpenAI
+  - name: AIService
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/ChatGPT-green.png
     type: select
     use:
       - 全球节点
-    filter: '美国|🇺🇸|US|新加坡|狮城|🇸🇬|SG'
+    filter: '^(?!.*(?:✰✰|★★)).*(?:美国|US|🇺🇸新加坡|SG|🇸🇬|台湾|TW|🇹🇼|🇨🇳).*$'
 
   - name: Global
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/Firefox.png
@@ -138,7 +145,7 @@ proxy-groups:
     disable-udp: false
     use:
       - 全球节点
-    # filter: '(?=.*(?:泡泡|哪吒))'
+    # filter: '^(?!.*(?:公益)).*'/、
     
 # 分流规则订阅
 rule-providers:
@@ -223,15 +230,18 @@ rule-providers:
 
 # 分流规则
 rules:
+  # > QianME媒体库
+  - DOMAIN,us.scancode.top, Emby
+
+  # 微斯人Emby
+  - DOMAIN-SUFFIX,ash.yt, Emby
+  - DOMAIN,ashtv.huajia.xyz, Emby
+
   # > 云海Emby（代理，端口号：443）
   - DOMAIN,emby.oceancloud.asia,Emby
 
-  # > 莉利娅Emby（日本直连，端口号：80）
-  - DOMAIN,jp.lilyemby.my,DIRECT
-  # > 莉利娅Emby（香港直连，端口号：443）
-  - DOMAIN,hk.lilyemby.my,DIRECT
   # > 莉利娅Emby（CDN加速，端口号：443）
-  - DOMAIN,cdn.lilyemby.my,Emby
+  - DOMAIN,cdn.lilyemby.my,DIRECT
   # > 莉利娅Emby（海外，端口号：443）
   - DOMAIN,cf.lilyemby.my,Emby
   
@@ -269,7 +279,7 @@ rules:
   - DOMAIN-SUFFIX,downloadtorrentfile.com,DIRECT
 
   # > ✈️订阅
-  - DOMAIN-SUFFIX,ash6.com,uTorrent
+  - DOMAIN-KEYWORD,ash.com,uTorrent
   - DOMAIN-KEYWORD,subscribe?token,uTorrent
   
   # > 解决Google Play无法下载的问题
@@ -301,9 +311,9 @@ rules:
   - RULE-SET,ChinaMaxNoIP,DIRECT
   - RULE-SET,CoolAPK,DIRECT
   - RULE-SET,LAN,DIRECT
-  - RULE-SET,OpenAI,OpenAI
+  - RULE-SET,OpenAI,AIService
   - RULE-SET,Spotify,Spotify
-  - RULE-SET,TikTok,Emby
+  - RULE-SET,TikTok,TikTok
   - RULE-SET,YouTube,YouTube
   - RULE-SET,Github,Global
   - RULE-SET,Google,Global
